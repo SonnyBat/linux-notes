@@ -446,6 +446,28 @@ Output any text that we provide.
 
 ---
 
+# Grep to Search file/files
+
+## Command
+
+```bash
+grep "1.1.1.1" access.log
+```
+
+## Description
+
+The `grep` command searches through file or if you use -r for recursive files to find content.
+
+## Example
+
+```bash
+grep -R "alex joined the server" server.log  
+```
+
+Search for content/string within any file or files.
+
+---
+
 # Key Takeaways
 
 - `pwd` shows your current location.
@@ -462,6 +484,7 @@ Output any text that we provide.
 - `su` allows switching between user accounts.
 - `man` gives manual of any command within the terminal.
 - `echo` Output any text that we provide.
+- `grep` Output any text that we provide.
 ---
 
 # Future Topics
