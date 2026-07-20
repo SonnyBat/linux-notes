@@ -2,7 +2,7 @@
 
 A collection of Linux fundamentals learned while studying cybersecurity.
 
-This document covers essential Linux commands used for navigating systems, viewing information, managing users, and interacting with files.
+This document covers essential Linux commands used for navigating systems, viewing information, managing users, interacting with files, and using common shell operators.
 
 ---
 
@@ -60,18 +60,16 @@ ls -l
 
 Displays additional information including:
 
-- File permissions
-- File owner
-- File size
-- Last modified date
+* File permissions
+* File owner
+* File size
+* Last modified date
 
 Example:
 
 ```text
 -rw-r--r-- 1 user user 1024 Jan 01 notes.txt
 ```
-
----
 
 ### Display Hidden Files
 
@@ -153,11 +151,11 @@ This searches for a file called `notes.txt`.
 
 During security assessments, `find` can be useful for locating:
 
-- Configuration files
-- Logs
-- Sensitive files
-- SSH keys
-- Scripts
+* Configuration files
+* Logs
+* Sensitive files
+* SSH keys
+* Scripts
 
 ---
 
@@ -183,10 +181,10 @@ cat notes.txt
 
 Reading files is a common task during:
 
-- System administration
-- Incident response
-- Penetration testing
-- Log analysis
+* System administration
+* Incident response
+* Penetration testing
+* Log analysis
 
 ---
 
@@ -234,10 +232,10 @@ Displays detailed information about the current system.
 
 Information includes:
 
-- Operating system
-- Kernel version
-- System architecture
-- Host information
+* Operating system
+* Kernel version
+* System architecture
+* Host information
 
 ## Example
 
@@ -276,12 +274,12 @@ Filesystem      Size  Used  Available
 
 ## Common Entries
 
-| Entry | Description |
-|---|---|
-| `/dev/root` | Main system filesystem |
-| `tmpfs` | Temporary filesystem stored in RAM |
-| `/dev/shm` | Shared memory filesystem |
-| `/run/user/UID` | Temporary user runtime files |
+| Entry           | Description                        |
+| --------------- | ---------------------------------- |
+| `/dev/root`     | Main system filesystem             |
+| `tmpfs`         | Temporary filesystem stored in RAM |
+| `/dev/shm`      | Shared memory filesystem           |
+| `/run/user/UID` | Temporary user runtime files       |
 
 ---
 
@@ -315,10 +313,10 @@ cat filename
 
 Configuration files may contain important information such as:
 
-- System settings
-- Service configurations
-- User information
-- Application settings
+* System settings
+* Service configurations
+* User information
+* Application settings
 
 ---
 
@@ -346,9 +344,9 @@ This connects to the device at `192.168.1.10` as the specified user.
 
 SSH is commonly used by:
 
-- System administrators
-- Security professionals
-- Penetration testers
+* System administrators
+* Security professionals
+* Penetration testers
 
 Understanding SSH is important for both securing and assessing systems.
 
@@ -402,7 +400,7 @@ A password may be required depending on the account permissions.
 
 ---
 
-# Manual of Commands
+# Manual Pages
 
 ## Command
 
@@ -412,7 +410,7 @@ man command
 
 ## Description
 
-The `man` gives manual of any command within the terminal.
+The `man` command displays the manual page for a command, providing detailed information about its usage, options, and examples.
 
 ## Example
 
@@ -420,11 +418,11 @@ The `man` gives manual of any command within the terminal.
 man nc
 ```
 
-This provides information on what nc command is alongside the arguments you can provide it this can be used on any command.
+This displays the manual page for the `nc` command. Manual pages are available for most Linux commands.
 
 ---
 
-# Echo Output text we provide
+# Echo Output
 
 ## Command
 
@@ -434,7 +432,7 @@ echo Hello World
 
 ## Description
 
-The `echo` command prints anything we text after it into the terminal.
+The `echo` command prints text to the terminal.
 
 ## Example
 
@@ -442,11 +440,17 @@ The `echo` command prints anything we text after it into the terminal.
 echo Hello World
 ```
 
-Output any text that we provide.
+Output:
+
+```text
+Hello World
+```
+
+The `echo` command is also commonly used with output redirection to create or update files.
 
 ---
 
-# Grep to Search file/files
+# Searching Files with Grep
 
 ## Command
 
@@ -456,45 +460,199 @@ grep "1.1.1.1" access.log
 
 ## Description
 
-The `grep` command searches through file or if you use -r for recursive files to find content.
+The `grep` command searches files for matching text or patterns.
+
+Using the `-R` option allows recursive searching through directories.
 
 ## Example
 
 ```bash
-grep -R "alex joined the server" server.log  
+grep -R "alex joined the server" server.log
 ```
 
-Search for content/string within any file or files.
+This searches for the specified text within one or more files.
+
+## Cybersecurity Relevance
+
+`grep` is widely used to search:
+
+* Log files
+* Configuration files
+* Source code
+* Authentication logs
+* Command output
+
+---
+
+# Shell Operators
+
+Shell operators control how commands are executed or where their output is sent.
+
+---
+
+## Background Execution (`&`)
+
+### Command
+
+```bash
+command &
+```
+
+### Description
+
+The `&` operator runs a command in the background, allowing you to continue using the terminal while the command executes.
+
+This is useful for long-running tasks.
+
+### Example
+
+```bash
+cp largefile.iso /backup &
+```
+
+The file copy continues in the background while you can continue working.
+
+## Cybersecurity Relevance
+
+Running long scans or file operations in the background allows you to continue investigating systems without waiting for the task to complete.
+
+---
+
+## Conditional Execution (`&&`)
+
+### Command
+
+```bash
+command1 && command2
+```
+
+### Description
+
+The `&&` operator runs the second command only if the first command completes successfully.
+
+This is useful when one command depends on another.
+
+### Example
+
+```bash
+mkdir logs && cd logs
+```
+
+If the `logs` directory is successfully created, the terminal changes into it.
+
+If the first command fails, the second command is not executed.
+
+## Cybersecurity Relevance
+
+This operator is frequently used in scripts and command chains where each step should only execute after the previous one succeeds.
+
+---
+
+## Output Redirection (`>`)
+
+### Command
+
+```bash
+command > filename
+```
+
+### Description
+
+The `>` operator redirects the output of a command into a file.
+
+If the file already exists, its contents will be overwritten.
+
+### Example
+
+```bash
+echo Hey > welcome.txt
+```
+
+Contents of `welcome.txt`:
+
+```text
+Hey
+```
+
+## Cybersecurity Relevance
+
+Output redirection is useful for saving command results, scan output, logs, and reports for later analysis.
+
+---
+
+## Append Output (`>>`)
+
+### Command
+
+```bash
+command >> filename
+```
+
+### Description
+
+The `>>` operator appends the output of a command to the end of a file instead of replacing its existing contents.
+
+### Example
+
+Create the file:
+
+```bash
+echo Hey > welcome.txt
+```
+
+Append another line:
+
+```bash
+echo Hello >> welcome.txt
+```
+
+Contents of `welcome.txt`:
+
+```text
+Hey
+Hello
+```
+
+Unlike `>`, the `>>` operator preserves any existing data within the file.
+
+## Cybersecurity Relevance
+
+Appending output is useful when recording logs, storing scan results, or documenting findings over time without losing previous information.
 
 ---
 
 # Key Takeaways
 
-- `pwd` shows your current location.
-- `ls` lists files and directories.
-- `cd` changes directories.
-- `find` searches for files.
-- `cat` reads file contents.
-- `whoami` identifies the current user.
-- `uname` provides system information.
-- `df -h` displays disk usage.
-- `/etc` contains important Linux configuration files.
-- `ssh` provides secure remote access.
-- `history` shows previous commands.
-- `su` allows switching between user accounts.
-- `man` gives manual of any command within the terminal.
-- `echo` Output any text that we provide.
-- `grep` Output any text that we provide.
+* `pwd` shows your current location.
+* `ls` lists files and directories.
+* `cd` changes directories.
+* `find` searches for files.
+* `cat` reads file contents.
+* `whoami` identifies the current user.
+* `uname` provides system information.
+* `df -h` displays disk usage.
+* `/etc` contains important Linux configuration files.
+* `ssh` provides secure remote access.
+* `history` shows previous commands.
+* `su` allows switching between user accounts.
+* `man` displays manual pages for Linux commands.
+* `echo` prints text to the terminal.
+* `grep` searches files for matching text or patterns.
+* `&` runs commands in the background.
+* `&&` executes the next command only if the previous command succeeds.
+* `>` redirects output to a file and overwrites existing contents.
+* `>>` appends output to the end of a file.
+
 ---
 
 # Future Topics
 
 Upcoming Linux notes will cover:
 
-- File permissions
-- Users and groups
-- Processes
-- Services
-- Networking
-- Bash scripting
-- Privilege escalation
+* File permissions
+* Users and groups
+* Processes
+* Services
+* Networking
+* Bash scripting
+* Privilege escalation
