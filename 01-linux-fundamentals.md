@@ -402,6 +402,28 @@ A password may be required depending on the account permissions.
 
 ---
 
+# Manual of Commands
+
+## Command
+
+```bash
+man command
+```
+
+## Description
+
+The `man` gives manual of any command within the terminal.
+
+## Example
+
+```bash
+man nc
+```
+
+This provides information on what nc command is alongside the arguments you can provide it this can be used on any command.
+
+---
+
 # Key Takeaways
 
 - `pwd` shows your current location.
@@ -416,7 +438,7 @@ A password may be required depending on the account permissions.
 - `ssh` provides secure remote access.
 - `history` shows previous commands.
 - `su` allows switching between user accounts.
-
+- `man` gives manual of any command within the terminal.
 ---
 
 # Future Topics
