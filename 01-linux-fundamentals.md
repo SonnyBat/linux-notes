@@ -424,6 +424,28 @@ This provides information on what nc command is alongside the arguments you can 
 
 ---
 
+# Echo Output text we provide
+
+## Command
+
+```bash
+echo Hello World
+```
+
+## Description
+
+The `echo` command prints anything we text after it into the terminal.
+
+## Example
+
+```bash
+echo Hello World
+```
+
+Output any text that we provide.
+
+---
+
 # Key Takeaways
 
 - `pwd` shows your current location.
@@ -439,6 +461,7 @@ This provides information on what nc command is alongside the arguments you can 
 - `history` shows previous commands.
 - `su` allows switching between user accounts.
 - `man` gives manual of any command within the terminal.
+- `echo` Output any text that we provide.
 ---
 
 # Future Topics
