@@ -220,6 +220,44 @@ Attackers may disguise malicious files by changing their extensions. The `file` 
 
 ---
 
+# Editing Files
+
+## Command
+
+```bash
+nano
+```
+
+## Description
+
+The `nano` command is a terminal-based text editor used to create and edit text files. It is beginner-friendly and displays common keyboard shortcuts at the bottom of the screen.
+
+## Example
+
+Open an existing file:
+
+```bash
+nano notes.txt
+```
+
+Create a new file:
+
+```bash
+nano script.sh
+```
+
+Common shortcuts:
+
+- `Ctrl + O` — Save the file.
+- `Ctrl + X` — Exit Nano.
+- `Ctrl + W` — Search for text.
+
+## Cybersecurity Relevance
+
+The `nano` editor is commonly used to edit configuration files, Bash scripts, and system settings directly from the terminal. Security professionals frequently use it to modify SSH configurations, firewall rules, and other system files on Linux servers.
+
+---
+
 # Key Takeaways
 
 - `touch` creates empty files.
@@ -229,6 +267,7 @@ Attackers may disguise malicious files by changing their extensions. The `file` 
 - `rm` deletes files and directories.
 - `cat` displays file contents.
 - `file` identifies a file's true type.
+- `nano` edit a text file in terminal.
 
 ---
 
